@@ -4,7 +4,7 @@ import axios from "axios";
 // Custom CORS Handling
 function handleCors(req) {
   const origin = req.headers.get("origin");
-  const allowedOrigins = ["http://localhost:3000"];
+  const allowedOrigins = ["https://djerba-toorr.vercel.app"];
 
   if (allowedOrigins.includes(origin || "")) {
     const response = NextResponse.next();
