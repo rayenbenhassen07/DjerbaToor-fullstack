@@ -4,7 +4,10 @@ import axios from "axios";
 // Custom CORS Handling
 function handleCors(req) {
   const origin = req.headers.get("origin");
-  const allowedOrigins = ["https://djerba-toorr.vercel.app"];
+  const allowedOrigins = [
+    "http://localhost:3000", // Development origin
+    "https://djerba-toorr.vercel.app", // Production Vercel origin
+  ];
 
   if (allowedOrigins.includes(origin || "")) {
     const response = NextResponse.next();
@@ -21,7 +24,7 @@ function handleCors(req) {
 
     // Handle preflight requests
     if (req.method === "OPTIONS") {
-      response.headers.set("Access-Control-Max-Age", "86400"); // Cache preflight request for 24 hours
+      response.headers.set("Access-Control-Max-Age", "86400");
       return new NextResponse(null, { status: 204 });
     }
     return response;
