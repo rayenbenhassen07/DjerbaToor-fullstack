@@ -5,9 +5,11 @@ import axios from "axios";
 function handleCors(req) {
   const origin = req.headers.get("origin");
   const allowedOrigins = [
-    "http://localhost:3000", // Development origin
-    "https://djerba-toorr.vercel.app", // Production Vercel origin
-    "https://djerba-toorr-5qz2mjawn-rayens-projects-ca5e42fe.vercel.app/",
+    "http://localhost:3000",
+    "https://djerba-toorr.vercel.app",
+    "http://djerba-toorr.vercel.app",
+    "https://djerba-toorr-5qz2mjawn-rayens-projects-ca5e42fe.vercel.app",
+    "http://djerba-toorr-5qz2mjawn-rayens-projects-ca5e42fe.vercel.app",
   ];
 
   if (allowedOrigins.includes(origin || "")) {
