@@ -7,6 +7,7 @@ function handleCors(req) {
   const allowedOrigins = [
     "http://localhost:3000", // Development origin
     "https://djerba-toorr.vercel.app", // Production Vercel origin
+    "https://djerba-toorr-5qz2mjawn-rayens-projects-ca5e42fe.vercel.app/",
   ];
 
   if (allowedOrigins.includes(origin || "")) {
