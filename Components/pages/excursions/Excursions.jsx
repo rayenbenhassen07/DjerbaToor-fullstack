@@ -55,7 +55,7 @@ const Excursions = () => {
               EXCURSIONS
             </h2>
           </Link>
-          {/* <TripsGrid /> */}
+          <TripsGrid />
         </div>
       </section>
     </div>
