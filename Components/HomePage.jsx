@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-// import TripsGrid from "./TripsGrid";
+import TripsGrid from "./TripsGrid";
 
 import { IoMdStar } from "react-icons/io";
 
@@ -47,7 +47,7 @@ const HomePage = () => {
               EXCURSIONS
             </h2>
           </Link>
-          {/* <TripsGrid /> */}
+          <TripsGrid />
         </div>
       </section>
 
