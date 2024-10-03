@@ -128,6 +128,7 @@ model directus_files {
   tus_id                                                                String?             @db.VarChar(64)
   tus_data                                                              Json?               @db.Json
   uploaded_on                                                           DateTime?           @db.Timestamptz(6)
+  blog                                                                  blog[]
   directus_folders                                                      directus_folders?   @relation(fields: [folder], references: [id], onUpdate: NoAction, map: "directus_files_folder_foreign")
   directus_users_directus_files_modified_byTodirectus_users             directus_users?     @relation("directus_files_modified_byTodirectus_users", fields: [modified_by], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "directus_files_modified_by_foreign")
   directus_users_directus_files_uploaded_byTodirectus_users             directus_users?     @relation("directus_files_uploaded_byTodirectus_users", fields: [uploaded_by], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "directus_files_uploaded_by_foreign")
@@ -472,18 +473,18 @@ model directus_webhooks {
 }
 
 model reservations {
-  id               Int       @id @default(autoincrement())
-  trip_id          Int
-  name             String    @db.VarChar(100)
-  quantity         String?
-  phone            String    @db.VarChar(20)
-  email            String?   @db.VarChar(100)
-  date DateTime  @db.Timestamp(6)
-  remarque         String?
-  created_at       DateTime? @default(now()) @db.Timestamp(6)
-  updated_at       DateTime? @default(now()) @db.Timestamp(6)
-  options          String?
-  trips            trips     @relation(fields: [trip_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  id         Int       @id @default(autoincrement())
+  trip_id    Int
+  name       String    @db.VarChar(100)
+  phone      String    @db.VarChar(20)
+  email      String?   @db.VarChar(100)
+  remarque   String?
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+  updated_at DateTime? @default(now()) @db.Timestamp(6)
+  options    String?
+  date       DateTime? @default(now()) @db.Timestamp(6)
+  quantity   String?
+  trips      trips     @relation(fields: [trip_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 }
 
 model trip_images {
@@ -529,9 +530,32 @@ model trips {
   created_at        DateTime?       @default(now()) @db.Timestamp(6)
   updated_at        DateTime?       @default(now()) @db.Timestamp(6)
   main_img          String?         @db.Uuid
+  blog_trip         blog_trip[]
   reservations      reservations[]
   trip_images       trip_images[]
   trip_options      trip_options[]
   trip_schedule     trip_schedule[]
   directus_files    directus_files? @relation(fields: [main_img], references: [id], onUpdate: NoAction, map: "trips_main_img_foreign")
+}
+
+model blog {
+  id                Int             @id @default(autoincrement())
+  title             String?         @db.VarChar(255)
+  slug              String?         @db.VarChar(255)
+  image             String?         @db.Uuid
+  short_description String?
+  long_description  String?
+  author            String?         @db.VarChar(255)
+  creadted_at       DateTime?       @default(now()) @db.Timestamp(6)
+  update_at         DateTime?       @default(now()) @db.Timestamp(6)
+  directus_files    directus_files? @relation(fields: [image], references: [id], onUpdate: NoAction, map: "blog_image_foreign")
+  blog_trip         blog_trip[]
+}
+
+model blog_trip {
+  id      Int    @id @default(autoincrement())
+  blog_id Int?
+  trip_id Int?
+  blog    blog?  @relation(fields: [blog_id], references: [id], onUpdate: NoAction, map: "blog_trip_blog_id_foreign")
+  trips   trips? @relation(fields: [trip_id], references: [id], onUpdate: NoAction, map: "blog_trip_trip_id_foreign")
 }

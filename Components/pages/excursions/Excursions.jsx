@@ -1,5 +1,6 @@
 "use client";
-// import TripsGrid from "@/Components/TripsGrid";
+import ModernFooter from "@/Components/ModernFooter";
+import TripsGrid from "@/Components/TripsGrid";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -8,34 +9,22 @@ import React from "react";
 const Excursions = () => {
   const router = useRouter();
   return (
-    <div className="w-full flex flex-col justify-center items-center text-white pt-20 min-h-screen bg-neutral-800">
+    <div className="w-full flex flex-col justify-center items-center text-white lg:pt-20 min-h-screen bg-neutral-800">
       <header className="bg-gradient-to-r from-neutral-700 to-neutral-800 py-12 md:py-20 lg:py-20">
         <div className="container px-4 md:px-6">
           <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tighter text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-                Elevate Your Esports Experience
+              <h1 className="text-2xl font-bold tracking-tighter text-primary-foreground sm:text-5xl">
+                Discover the beauty of Djerba with thrilling excursions
               </h1>
-              <p className="max-w-[600px] text-primary-foreground/80 md:text-xl">
-                Discover the latest tournaments, top players, and trending games
-                on our cutting-edge esports platform.
+              <p className="max-w-[600px] text-neutral-400 text-sm md:text-xl">
+                where adventure meets nature. Ride through stunning scenic
+                landscapes on a quad bike, feel the rush of adrenaline as you
+                explore hidden trails, and venture deep into the heart of the
+                majestic Sahara desert. Whether you're seeking excitement or
+                serenity, our excursions offer an unforgettable journey through
+                the island's breathtaking wonders.
               </p>
-              <div className="flex flex-col gap-2 sm:flex-row">
-                <Link
-                  href="#"
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}
-                >
-                  Join Now
-                </Link>
-                <Link
-                  href="#"
-                  className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}
-                >
-                  Watch Tournaments
-                </Link>
-              </div>
             </div>
             <img
               src="/jetski.jpeg"
@@ -58,6 +47,10 @@ const Excursions = () => {
           <TripsGrid />
         </div>
       </section>
+
+      <footer className="from-neutral-700 text-white w-full">
+        <ModernFooter />
+      </footer>
     </div>
   );
 };

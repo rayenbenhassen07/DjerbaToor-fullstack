@@ -11,7 +11,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="bg-neutral-800 w-full fixed left-0 top-0 z-40 py-4">
+    <nav className="bg-neutral-800 w-full fixed left-0 top-0 z-40 py-4 lg:px-10">
       <div className="flex justify-between items-center max-w-[1500px] px-2 ml-auto mr-auto">
         <a href="/" className="font-semibold text-lg">
           <div className="text-2xl text-white p-2">Jediwa</div>
@@ -26,41 +26,51 @@ const Navbar = () => {
         <ul
           className={`${
             isMenuOpen ? "flex" : "hidden"
-          } lg:flex bg-neutral-800 text-white w-full h-full items-center justify-center gap-10`}
+          } lg:flex bg-neutral-800 text-white w-full h-full items-center justify-center gap-5`}
         >
           <Link href="/">
             <li className="cursor-pointer">
-              <div className="text-sm lg:text-base">Home</div>
+              <div className="text-sm p-2 rounded-lg hover:bg-blue-500  transition ">
+                Home
+              </div>
             </li>
           </Link>
 
           <a href="/product-category/excursions">
             <li className="cursor-pointer">
-              <div className="text-sm lg:text-base">Excursions</div>
+              <div className="text-sm p-2 rounded-lg hover:bg-blue-500  transition ">
+                Excursions
+              </div>
             </li>
           </a>
 
           <a href="/blog">
             <li className="cursor-pointer">
-              <div className="text-sm lg:text-base">Blog</div>
+              <div className="text-sm p-2 rounded-lg hover:bg-blue-500  transition ">
+                Blog
+              </div>
             </li>
           </a>
 
           <a href="#Examples">
             <li className="cursor-pointer">
-              <div className="text-sm lg:text-base">Events</div>
+              <div className="text-sm p-2 rounded-lg hover:bg-blue-500  transition ">
+                Events
+              </div>
             </li>
           </a>
 
-          <a href="#Services">
+          <a href="/contact">
             <li className="cursor-pointer">
-              <div className="text-sm lg:text-base">Contact</div>
+              <div className="text-sm p-2 rounded-lg hover:bg-blue-500  transition ">
+                Contact
+              </div>
             </li>
           </a>
         </ul>
 
         <div className="hidden lg:flex justify-center items-center gap-7">
-          <a href="#calendly">
+          <a href="/product-category/excursions">
             <button className="p-3 w-40 rounded-xl text-sm bg-blue-500 text-white font-extrabold hover:bg-blue-600 transition">
               <div className="flex justify-center items-center gap-2">
                 <FaRegNewspaper size={20} className="text-white" />
@@ -89,13 +99,13 @@ const Navbar = () => {
         <a href="/product-category/excursions" onClick={toggleMenu}>
           <div className="text-lg">Excursions</div>
         </a>
-        <a href="#Statistic" onClick={toggleMenu}>
-          <div className="text-lg">Events</div>
-        </a>
-        <a href="#Examples" onClick={toggleMenu}>
+        <a href="/blog" onClick={toggleMenu}>
           <div className="text-lg">Blog</div>
         </a>
-        <a href="#Services" onClick={toggleMenu}>
+        <a href="#" onClick={toggleMenu}>
+          <div className="text-lg">Events</div>
+        </a>
+        <a href="/contact" onClick={toggleMenu}>
           <div className="text-lg">Contact</div>
         </a>
         <a href="#calendly">

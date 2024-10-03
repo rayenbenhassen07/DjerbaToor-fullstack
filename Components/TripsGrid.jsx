@@ -22,7 +22,7 @@ const TripsGrid = () => {
   }, []);
 
   return (
-    <div className="container mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-6">
+    <div className="container mx-auto grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-6">
       {trips.map((trip) => (
         <Link key={trip.id} href={`/product-category/excursions/${trip.slug}`}>
           <div className="group relative cursor-pointer overflow-hidden rounded-xl bg-white shadow-lg">
@@ -31,11 +31,13 @@ const TripsGrid = () => {
               width="400"
               height="300"
               alt={trip.name}
-              className="h-96 w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:filter group-hover:saturate-150 group-hover:brightness-75"
+              className="h-60 lg:h-96 w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:filter group-hover:saturate-150 group-hover:brightness-75"
             />
             <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-60 p-4 text-center">
-              <h3 className="text-lg font-semibold text-white">{trip.name}</h3>
-              <p className="text-white">${trip.price}</p>
+              <h3 className="text-xs lg:text-lg font-semibold text-white">
+                {trip.name}
+              </h3>
+              <p className="text-white text-xs lg:text-lg">${trip.price}</p>
             </div>
           </div>
         </Link>

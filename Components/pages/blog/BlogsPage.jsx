@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ModernFooter from "@/Components/ModernFooter";
 
 const BlogsPage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -36,39 +37,45 @@ const BlogsPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-10">
-      <header className="text-start mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Our Blog</h1>
-        <p className="text-lg text-gray-700">
-          Welcome to our blog! Here you'll find the latest updates, tips, and
-          stories. Browse through our posts to stay informed and inspired.
-        </p>
-      </header>
+    <div className="min-h-screen bg-neutral-800 pt-8 ">
+      <div className="px-8 min-h-screen">
+        <header className="text-start mb-8 ">
+          <h1 className="text-3xl font-bold text-white mb-4">Our Blog</h1>
+          <p className="text-lg text-gray-400">
+            Welcome to our blog! Here you'll find the latest updates, tips, and
+            stories. Browse through our posts to stay informed and inspired.
+          </p>
+        </header>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-4 lg:p-4 my-4 mx-2 lg:mx-6">
-        {blogs.length === 0 ? (
-          <div>No blogs found</div>
-        ) : (
-          blogs.map((blog) => (
-            <Link href={`/blog/${blog.slug}`} key={blog.id}>
-              <div className="p-4  cursor-pointer h-64 lg:h-full ">
-                <div>
-                  <Image
-                    src={`http://75.119.130.218:8055/assets/${blog.image}`}
-                    alt={blog.title}
-                    width={300}
-                    height={300}
-                    className="h-40 w-60 lg:h-60 lg:w-96 object-cover rounded-xl transition-transform duration-300 ease-in-out group-hover:scale-110"
-                  />
+        <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-4 lg:p-4 my-4 mx-2 lg:mx-6">
+          {blogs.length === 0 ? (
+            <div>No blogs found</div>
+          ) : (
+            blogs.map((blog) => (
+              <Link href={`/blog/${blog.slug}`} key={blog.id}>
+                <div className="p-4  cursor-pointer h-64 lg:h-full ">
+                  <div>
+                    <Image
+                      src={`http://75.119.130.218:8055/assets/${blog.image}`}
+                      alt={blog.title}
+                      width={300}
+                      height={300}
+                      className="h-40 w-60 lg:h-60 lg:w-96 object-cover rounded-xl transition-transform duration-300 ease-in-out group-hover:scale-110"
+                    />
+                  </div>
+                  <h2 className="p-2 font-semibold text-xs lg:text-sm text-white">
+                    {blog.title}
+                  </h2>
                 </div>
-                <h2 className="p-2 font-semibold text-xs lg:text-base">
-                  {blog.title}
-                </h2>
-              </div>
-            </Link>
-          ))
-        )}
+              </Link>
+            ))
+          )}
+        </div>
       </div>
+
+      <footer className="from-neutral-700 text-white w-full">
+        <ModernFooter />
+      </footer>
     </div>
   );
 };
